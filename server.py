@@ -49,8 +49,8 @@ def get_data():
     f.close()
     f = open("demofile2.txt", "w")
     f.close()
-    # "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"
-    openai.api_key = "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"
+    
+    openai.api_key = "YOUR API KEY"
     response = openai.Completion.create(
         engine="davinci",
         prompt=prompt,
@@ -66,7 +66,7 @@ def get_data():
 if __name__ == '__main__':
     app.run(debug=True)
 
-    # "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"
+    
 
 
 # from flask import Flask, jsonify, request
