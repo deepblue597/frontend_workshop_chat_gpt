@@ -1,0 +1,22 @@
+<h1>ChatGPT Angular App! <mat-icon fontIcon="smart_toy"> </mat-icon></h1>
+
+<mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    {{ message.name + ":" + message.content }}
+  </mat-list-item>
+</mat-list>
+<form>
+  <mat-form-field>
+    <mat-label>Ask a question</mat-label>
+    <input
+      matInput
+      placeholder="e.g what is frontend development"
+      (input)="onUpdate($event.target)"
+    />
+  </mat-form-field>
+  <br />
+  <button mat-button (click)="onSubmit()">
+    Submit
+    <mat-icon fontIcon="send"> </mat-icon>
+  </button>
+</form>
