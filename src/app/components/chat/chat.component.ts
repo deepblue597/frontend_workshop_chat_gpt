@@ -32,10 +32,14 @@ export class ChatComponent {
     console.log(this.content);
     this.chatService.postQuestion(this.content);
     delay(1000);
-    await lastValueFrom(this.chatService.getAnswer());
-    await lastValueFrom(this.chatService.getAnswer()).then(
-      (data) => (this.data = data)
-    );
+    this.data = await lastValueFrom(this.chatService.getAnswer());
+    console.log(this.data);
+    await lastValueFrom(this.chatService.getAnswer()).then((data) => {
+      this.data = data;
+      console.log(data);
+      console.log('hihihihih');
+    });
+
     this.data = this.data.data;
     this.messages.push({ name: 'ChatGPT', content: this.data });
 

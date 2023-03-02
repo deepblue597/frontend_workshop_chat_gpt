@@ -23,8 +23,10 @@ def add_question():
     question = request.get_json()
 
     f = open("demofile2.txt", "a")
-    f.write(question)
+    print(question['body'])
+    f.write(question['body'])
     f.close
+
     return 'Done', 201
 
 
@@ -49,8 +51,8 @@ def get_data():
     f.close()
     f = open("demofile2.txt", "w")
     f.close()
-    
-    openai.api_key = "YOUR API KEY"
+
+    openai.api_key = "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"
     response = openai.Completion.create(
         engine="davinci",
         prompt=prompt,
@@ -59,14 +61,14 @@ def get_data():
         top_p=1,
         frequency_penalty=0.5,
         presence_penalty=0)
-
+    print(response.choices[0].text)
+    f = open("demofile2.txt", "w")
+    f.write(response.choices[0].text)
     return response.choices[0].text
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-    
 
 
 # from flask import Flask, jsonify, request
